@@ -38,19 +38,19 @@ public class FilmServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        // l'URL contient-elle le paramÃ¨tre id ?
+        // l'URL contient-elle le paramètre id ?
         if (request.getParameter("id") != null)
         {
             try
             {
-                // je rÃ©cupÃ¨re sa valeur
+                // je récupère sa valeur
                 int id = Integer.parseInt(request.getParameter("id"));
-                // je rÃ©cupÃ¨re le film avec cet id
+                // je récupère le film avec cet id
                 FilmDao filmDao = new FilmDaoSql();
                 Film film = filmDao.findById(id);
                 if (film != null)
                 {
-                    // je passe le film Ã  la requÃªte
+                    // je passe le film à  la requête
                     request.setAttribute("film", film);
                 }
                 else
@@ -61,21 +61,21 @@ public class FilmServlet extends HttpServlet
             }
             catch (NumberFormatException e)
             {
-                String erreur = "L'identifiant doit Ãªtre un entier";
+                String erreur = "L'identifiant doit être un entier";
                 request.setAttribute("error", erreur);
             }
 
-            // je transmets la requÃªte Ã  la jsp
+            // je transmets la requête à la jsp
             request.getRequestDispatcher("/film.jsp").forward(request, response);
 
         }
-        // la requÃªte ne contient pas le paramÃ¨tre 'id'
+        // la requête ne contient pas le paramètre 'id'
         else
         {
             // je vais chercher tous les films
             FilmDao filmDao = new FilmDaoSql();
             List<Film> films = filmDao.findAll();
-            // injection dans la requÃªte
+            // injection dans la requête
             request.setAttribute("films", films);
             // transfert
             request.getRequestDispatcher("films.jsp").forward(request, response);
