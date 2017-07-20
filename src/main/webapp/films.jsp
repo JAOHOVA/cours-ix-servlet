@@ -8,19 +8,20 @@
 <title>Films</title>
 </head>
 <body>
-  <table>
-    <tr>
-      <th>Titre</th>
-      <th>Durée</th>
-      <th>Année</th>
-    </tr>
-    <c:forEach items="${ films }" var="film">
-      <tr>
-        <td><c:out value="${ film.nom }" /></td>
-        <td><c:out value="${ film.duree }" /></td>
-        <td><c:out value="${ film.annee }" /></td>
-      </tr>
-    </c:forEach>
-  </table>
+  <h1>Liste des films</h1>
+  <ul>
+	<c:forEach var="film" items="${ films}"> 
+	
+		<li>
+			<p>
+				<b><c:out value="${ film.nom }"/></b>
+			</p>
+			<ul>
+				<li><b><c:out value="${ film.duree }"/> minutes</b></li>
+				<li><b><c:out value="${ film.annee}"/></b></li>
+			</ul>
+		</li>
+	</c:forEach>
+</ul>
 </body>
 </html>

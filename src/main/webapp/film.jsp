@@ -11,5 +11,6 @@
   <h1>Titre : ${film.nom}</h1>
   <h2>Durée : ${film.duree} minutes</h2>
   <h3>Année : ${film.annee}</h3>
+  <a href="${pageContext.request.contextPath}/film">Retour à la liste</a>
 </body>
 </html>
